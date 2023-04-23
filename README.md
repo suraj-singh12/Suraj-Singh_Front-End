@@ -17,4 +17,4 @@ npm install
 npm run dev
 ```
 
-### See the Output in browser on http://localhost:3000/
+### See the Output in browser on http://localhost:5173/
