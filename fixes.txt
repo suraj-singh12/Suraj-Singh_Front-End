@@ -25,4 +25,7 @@ WrappedListComponent.propTypes = {
 Cannot update a component (`WrappedSingleListItem`) while rendering a different component (`WrappedListComponent`).
     To locate the bad setState() call inside `WrappedSingleListItem`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render
 
-fixed by doing: 
+fixed by writing 
+onClick = {() => onClickHandler(index)}
+instead of 
+onClick = {onClickHandler(index)}  which lead to infinite renders due to triggering of onClickHandler during rendering triggered by WrappedListComponent

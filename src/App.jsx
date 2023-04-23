@@ -1,5 +1,6 @@
 import React from 'react';
 import List from './List';
+import './App.css';
 
 function App() {
   const items = [
@@ -9,7 +10,7 @@ function App() {
   ];
 
   return (
-    <div>
+    <div className="container">
       <h1>List of Items</h1>
       <List items={items} />
     </div>
