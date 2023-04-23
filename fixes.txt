@@ -1,0 +1,28 @@
+> import prop-types
+> Uncaught TypeError: Proptypes.shapeOf is not a function
+> Uncaught Invarient Violation: calling proptypes validators directly is not supported by the prop-types package. 
+    Use PropTypes.checkPropTypes() to call them
+    Fixed by doing: arrayOf instead of array in    
+
+WrappedListComponent.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    text: PropTypes.string.isRequired,
+  })),
+};
+
+> Each child should have unique key
+  fixed in WrappedSingleListItem, and WrappedListComponent
+  added key={index} in all
+
+> Invalid prop `isSelected` of type function, supplied to WrappedSingleListItem, expected `boolean`
+  fixed by doing selectedIndex === index in WrappedListComponent
+
+> setSelectedIndex is not a function
+  was: const [setSelectedIndex, selectedIndex] = useState();
+  wrote it like: const [selectedIndex, setSelectedIndex] = useState();
+
+==> Items were now rendered, but with the error: 
+Cannot update a component (`WrappedSingleListItem`) while rendering a different component (`WrappedListComponent`).
+    To locate the bad setState() call inside `WrappedSingleListItem`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render
+
+fixed by doing: 
