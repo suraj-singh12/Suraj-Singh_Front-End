@@ -19,6 +19,8 @@ const WrappedSingleListItem = ({
   );
 };
 
+// this ensures that the props passed to WrappedSingleListItem are of the type specified below
+// if any irregularity is found, it will be caught and shown in terminal
 WrappedSingleListItem.propTypes = {
   index: PropTypes.number,
   isSelected: PropTypes.bool,
@@ -37,6 +39,7 @@ const WrappedListComponent = ({
 }) => {
   const [selectedIndex, setSelectedIndex] = useState();
 
+  // when items array changes, we set selectedIndex to null
   useEffect(() => {
     setSelectedIndex(null);
   }, [items]);
@@ -59,19 +62,22 @@ const WrappedListComponent = ({
   )
 };
 
+// ensure the props to WrappedListComponent are of the syntax
+// [{text: 'item1', text: 'item2'}]
 WrappedListComponent.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string.isRequired,
   })),
 };
 
+// by default, the props to WrappedListComponent are null
 WrappedListComponent.defaultProps = {
   items: null,
 };
 
-const List = memo(WrappedListComponent);    // same with this
+const List = memo(WrappedListComponent);  
 // WrappedListComponent will re-render only when its new props are different than its previous props
 // thereby avoiding unncessary renders
 
-export default List;
+export default List;        // exporting a highly optimized list
 
